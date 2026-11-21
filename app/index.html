@@ -4,23 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonida Legend — GTA 6 Trophy Guide &amp; Tracker</title>
-<meta name="description" content="Offline guide and tracker for all 55 GTA 6 trophies on PS5: checklist, roadmap to the platinum, missables, and a cited guide for every trophy.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ff6b4a'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Georgia,serif' font-weight='bold' fill='white' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E">
+<meta name="description" content="An offline GTA 6 trophy guide and tracker for PS5: all 55 trophies, spoiler-safe checklists, missable-trophy warnings and a roadmap to the platinum.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ff6b4a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='32' font-weight='bold' fill='white' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header class="topbar">
   <div class="brand">
-    <div class="brand-mark" aria-hidden="true">VI</div>
+    <div class="brand-mark">VI</div>
     <div>
       <h1>Leonida Legend</h1>
-      <p class="subtitle">GTA 6 Trophy Guide &amp; Tracker &mdash; PlayStation 5 &middot; 55 trophies &middot; 1 Platinum, 2 Gold, 6 Silver, 46 Bronze &middot; 28 hidden</p>
+      <p class="subtitle">GTA 6 Trophy Guide &amp; Tracker — PlayStation 5 · 55 trophies · 1 Platinum, 2 Gold, 6 Silver, 46 Bronze · 28 hidden</p>
     </div>
   </div>
   <div class="top-actions">
-    <label class="spoiler-toggle" title="Hide story trophy names and descriptions until earned">
-      <input type="checkbox" id="spoilerToggle"> <span>Hide story spoilers</span>
-    </label>
+    <label class="spoiler-toggle"><input type="checkbox" id="spoilerToggle"> <span>Hide story spoilers</span></label>
     <button id="exportBtn" type="button">Export progress</button>
     <label class="import-label" for="importFile">Import progress</label>
     <input type="file" id="importFile" accept="application/json,.json" hidden>
@@ -29,38 +27,38 @@
 
 <section class="hero" id="hero">
   <div class="progress-block">
-    <div class="ring" id="progressRing" role="img" aria-label="Trophies earned"><span id="progressCount">0/55</span></div>
+    <div class="ring" id="progressRing"><span id="progressCount">0/55</span></div>
     <div class="progress-text">
       <p class="progress-line"><strong id="progressPct">0%</strong> to the Platinum</p>
-      <p class="progress-sub" id="progressSub">0 earned &middot; 0 bronze &middot; 0 silver &middot; 0 gold</p>
+      <p class="progress-sub" id="progressSub"></p>
       <div class="progress-bar"><div id="progressFill"></div></div>
       <p class="progress-note">Platinum needs all 54 others. Estimated road: ~200 hours, difficulty 4/10. One playthrough, no online trophies.</p>
     </div>
   </div>
   <div class="nextup" id="nextUp">
-    <h2>Next up &mdash; easiest unearned</h2>
+    <h2>Next up — easiest unearned</h2>
     <ol id="nextUpList"></ol>
   </div>
 </section>
 
-<nav class="tabs" role="tablist" aria-label="Guide sections">
-  <button type="button" class="tab active" data-tab="checklist" role="tab" aria-selected="true">Checklist</button>
-  <button type="button" class="tab" data-tab="roadmap" role="tab" aria-selected="false">Roadmap to Platinum</button>
-  <button type="button" class="tab" data-tab="missables" role="tab" aria-selected="false">Missables</button>
-  <button type="button" class="tab" data-tab="hundred" role="tab" aria-selected="false">100% Completion</button>
+<nav class="tabs" role="tablist">
+  <button class="tab active" type="button" data-tab="checklist" aria-selected="true">Checklist</button>
+  <button class="tab" type="button" data-tab="roadmap" aria-selected="false">Roadmap to Platinum</button>
+  <button class="tab" type="button" data-tab="missables" aria-selected="false">Missables</button>
+  <button class="tab" type="button" data-tab="hundred" aria-selected="false">100% Completion</button>
 </nav>
 
 <main>
-  <section id="tab-checklist" class="tabpage active">
+  <section class="tabpage active" id="tab-checklist">
     <div class="toolbar">
-      <input type="search" id="searchBox" placeholder="Search a trophy by name or description&hellip;" aria-label="Search trophies">
-      <div class="chips" id="kindChips" role="group" aria-label="Filter by kind">
-        <button type="button" class="chip active" data-kind="all">All 55</button>
-        <button type="button" class="chip" data-kind="story">Story</button>
-        <button type="button" class="chip" data-kind="missable">Missable</button>
-        <button type="button" class="chip" data-kind="collectibles">Collectibles</button>
-        <button type="button" class="chip" data-kind="activities">Activities</button>
-        <button type="button" class="chip" data-kind="platinum">Platinum</button>
+      <input type="search" id="searchBox" placeholder="Search a trophy by name or description…">
+      <div class="chips" id="kindChips">
+        <button class="chip active" type="button" data-kind="all">All 55</button>
+        <button class="chip" type="button" data-kind="story">Story</button>
+        <button class="chip" type="button" data-kind="missable">Missable</button>
+        <button class="chip" type="button" data-kind="collectibles">Collectibles</button>
+        <button class="chip" type="button" data-kind="activities">Activities</button>
+        <button class="chip" type="button" data-kind="platinum">Platinum</button>
       </div>
       <select id="gradeFilter" aria-label="Filter by grade">
         <option value="all">All grades</option>
@@ -86,29 +84,29 @@
     </div>
   </section>
 
-  <section id="tab-roadmap" class="tabpage">
-    <h2>Roadmap to the Platinum &mdash; 4 stages, one playthrough</h2>
-    <p class="page-intro">Built from the official trophy descriptions. No mission replay exists, so keep a manual save at the start and end of every chapter. Free roam stays open after the story, so almost everything can be cleaned up later &mdash; except one meditation (see Missables).</p>
+  <section class="tabpage" id="tab-roadmap">
+    <h2>Roadmap to the Platinum — 4 stages, one playthrough</h2>
+    <p class="page-intro">Make a manual save at the start and end of every chapter, and use free roam after the story for the long cleanup. There is only one potentially missable moment: the balcony meditation in Chapter 1.</p>
     <ol class="stages" id="stageList"></ol>
   </section>
 
-  <section id="tab-missables" class="tabpage">
+  <section class="tabpage" id="tab-missables">
     <h2>Missable trophies</h2>
     <p class="page-intro">Built from the official descriptions and the guides cited below. Only one trophy is reported as potentially missable. Everything else can be earned in free roam after the story.</p>
     <div id="missableList"></div>
   </section>
 
-  <section id="tab-hundred" class="tabpage">
-    <h2>100% Completion &mdash; for &ldquo;A Long Road&rdquo; (Gold)</h2>
-    <p class="page-intro">You do <strong>not</strong> need 100% of everything &mdash; the in-game checklist (Progress &gt; Stats &gt; 100% Completion) only asks for the portions below. Numbers from KeenGamer&rsquo;s 100% checklist, cross-checked against the official descriptions.</p>
+  <section class="tabpage" id="tab-hundred">
+    <h2>100% Completion — for “A Long Road” (Gold)</h2>
+    <p class="page-intro">Use the in-game checklist at Progress &gt; Stats &gt; 100% Completion. The numbers below come from KeenGamer — note that only a portion of each activity counts toward 100%, not everything.</p>
     <div class="hundred-grid" id="hundredGrid"></div>
   </section>
 </main>
 
 <footer>
-  <p><strong>Sources.</strong> Trophy names, descriptions and grades: the official PlayStation 5 list as published by Exophase and PSNProfiles (the two agree on every name, description and grade). Roadmap order, 100% checklist numbers and the missable warning: KeenGamer&rsquo;s GTA 6 Trophy Guide &amp; Platinum Roadmap; story order and time estimate: PushSquare&rsquo;s GTA 6 Trophy Guide &amp; Roadmap. Every trophy&rsquo;s guide names its sources beside it.</p>
-  <p><strong>Honest note.</strong> Every guide here is written in our own words from the official descriptions. The game is days old and nothing here was checked by playing it; anything still unconfirmed in the community is marked &ldquo;not yet confirmed&rdquo; in its guide. No Rockstar Games logo or official artwork is used anywhere in this guide.</p>
-  <p>Works fully offline &mdash; all files live in this app, progress is saved in your browser (localStorage). Export your progress regularly.</p>
+  <p>Sources: trophy names, descriptions and grades come from the official PS5 list published by Exophase and PSNProfiles — both agree on every name, description and grade. Roadmap order, the 100% completion numbers and the missable warning come from KeenGamer. Story order and the platinum time estimate come from PushSquare.</p>
+  <p>Honest note: every guide here is written in our own words from the official description. The game is only days old and nothing here was checked by playing it; details the community has not confirmed yet are marked “not yet confirmed”. No Rockstar logos or artwork are used anywhere in this app.</p>
+  <p>Works fully offline — all files live in this app, progress is saved in your browser (localStorage). Export your progress regularly.</p>
 </footer>
 
 <script type="module" src="js/main.js"></script>

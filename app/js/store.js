@@ -1,11 +1,8 @@
-// Progress store: localStorage persistence plus export / import.
-import { STORAGE_KEY, SPOILER_KEY } from "./config.js";
+import { SPOILER_KEY, STORAGE_KEY } from "./config.js";
 
 export function loadProgress() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    const parsed = raw ? JSON.parse(raw) : {};
-    return parsed && typeof parsed === "object" ? parsed : {};
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
   } catch {
     return {};
   }
@@ -15,30 +12,27 @@ export function saveProgress(progress) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
   } catch {
-    // Storage full or blocked: progress stays in memory for this visit.
+    // Storage full or unavailable — progress just won't persist.
   }
 }
 
 export function loadSpoilers() {
-  try {
-    return localStorage.getItem(SPOILER_KEY) === "1";
-  } catch {
-    return false;
-  }
+  return localStorage.getItem(SPOILER_KEY) === "1";
 }
 
 export function saveSpoilers(on) {
   try {
     localStorage.setItem(SPOILER_KEY, on ? "1" : "0");
   } catch {
-    // ignore
+    // Ignore storage errors.
   }
 }
 
 export function exportProgress(progress) {
+  const earned = Object.keys(progress).filter((name) => progress[name]);
   const blob = new Blob(
-    [JSON.stringify({ app: "leonida-legend", earned: Object.keys(progress).filter((k) => progress[k]) }, null, 2)],
-    { type: "application/json" }
+    [JSON.stringify({ app: "leonida-legend", earned }, null, 2)],
+    { type: "application/json" },
   );
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -52,8 +46,12 @@ export async function importProgressFile(file) {
   const text = await file.text();
   const data = JSON.parse(text);
   const names = Array.isArray(data) ? data : data.earned;
-  if (!Array.isArray(names)) throw new Error("File is not a Leonida Legend export.");
+  if (!Array.isArray(names)) {
+    throw new Error("File is not a Leonida Legend export.");
+  }
   const progress = {};
-  for (const name of names) if (typeof name === "string") progress[name] = true;
+  for (const name of names) {
+    progress[name] = true;
+  }
   return progress;
 }
